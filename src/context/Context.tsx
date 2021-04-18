@@ -1,22 +1,24 @@
-import React, { createContext, useEffect, useState } from 'react'
+import { createContext, useRef, useState } from "react";
 import { ContextData, ContextProviderProps } from './interfaces'
-export const Context = createContext({} as ContextData)
 
-const ContextProvider = ({ children }: ContextProviderProps) => {
-  const [darkTheme] = useState(false)
+export const Context = createContext({} as ContextData);
 
-  useEffect(() => {
-    console.log('')
-  }, [])
-  const updateTheme = (index: number) => {
-    console.log(darkTheme)
-  }
+export const ContextProvider = ({children}: ContextProviderProps) => {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [upperText, setUpperText] = useState("");
+    const [lowerText, setLowerText] = useState("");
 
-  return (
-    <Context.Provider value={{ darkTheme, updateTheme }}>
-      {children}
-    </Context.Provider>
-  )
+    return (
+        <Context.Provider value={{
+            canvasRef,
+            upperText,
+            lowerText,
+            setUpperText,
+            setLowerText
+        }}>
+        {
+            children
+        }
+        </Context.Provider>
+    )
 }
-
-export default ContextProvider

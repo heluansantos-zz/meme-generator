@@ -1,10 +1,13 @@
-import { ReactNode } from 'react'
+import { createContext, MutableRefObject, ReactNode, useRef, useState } from "react";
 
 export interface ContextProviderProps {
   children: ReactNode
 }
 
 export interface ContextData {
-  darkTheme: boolean
-  updateTheme: (value: number) => void
+  canvasRef: MutableRefObject<HTMLCanvasElement>;
+    upperText: string;
+    lowerText: string;
+    setUpperText: (value:string) => void;
+    setLowerText: (value:string) => void;
 }
