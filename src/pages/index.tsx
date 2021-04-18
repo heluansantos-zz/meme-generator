@@ -1,18 +1,22 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Head from 'next/head'
 
-import { Container } from '../styles/pages/Home'
+import { Container, Title, Description } from '../styles/pages/Home'
 import { Context } from '../context/Context'
 
 const Home: React.FC = () => {
   const { darkTheme } = useContext(Context)
+  const [name] = useState({
+    title: 'Meme Generator',
+    description: 'Meme Generator or editing.'
+  })
   return (
     <Container>
       <Head>
         <title>Meme Generator</title>
       </Head>
-      <h1>Meme Generator</h1>
-      <p>Meme Generator or editing.</p>
+      <Title>{name.title}</Title>
+      <Description>{name.description}</Description>
     </Container>
   )
 }
