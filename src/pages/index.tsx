@@ -9,7 +9,16 @@ import {
   Input,
   Label,
   DivInput,
-  Canvas
+  Canvas,
+  DivCanvas,
+  DragActive,
+  DragActiveTitle,
+  ButtonFont,
+  ButtonColorRed,
+  ButtonColorWhite,
+  ButtonColorBlack,
+  ButtonColorDiv,
+  ButtonFontDiv
 } from '../styles/pages/Home'
 import { Context } from '../context/Context'
 
@@ -21,13 +30,17 @@ const Home: React.FC = () => {
     setUpperText,
     upperText,
     onDrop,
-    images
+    images,
+    seletcColor,
+    seletcFont,
   } = useContext(Context)
-  const { getRootProps, getInputProps } = useDropzone({ onDrop, accept: ['image/*'] })
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept: ['image/*'] })
   const [name] = useState({
     title: 'Meme Generator',
     description: 'Meme Generator or editing.'
   })
+
+
   return (
     <Container>
       <Head>
@@ -38,16 +51,25 @@ const Home: React.FC = () => {
       <Description>{name.description}</Description>
 
       <main>
-        <div
+        <DivCanvas
           {...getRootProps()}
-          style={{ background: '#666', borderRadius: 10 }}
         >
-          <Canvas ref={canvasRef}> </Canvas>
+          {isDragActive ? (
+            <DragActive>
+              <DragActiveTitle>
+                Solte a imagem para fazer upload
+              </DragActiveTitle>
+            </DragActive>
+          ) : (
+            <Canvas ref={canvasRef}> </Canvas>
+          )}
+
           <input {...getInputProps()} />
 
-        </div>
-        {/* <img src={images[0]} alt="" /> */}
+        </DivCanvas>
+
         <form>
+
           <DivInput>
             <Label htmlFor="upperText">Title</Label>
             <Input
@@ -61,6 +83,20 @@ const Home: React.FC = () => {
               value={lowerText}
               onChange={(e) => setLowerText(e.target.value)}
             />
+          </DivInput>
+          <DivInput>
+            <Label htmlFor="upperText">Filters</Label>
+            <ButtonFontDiv>
+              <ButtonFont onClick={() => seletcFont('Roboto')}>Roboto</ButtonFont>
+              <ButtonFont onCLick={() => seletcFont('Zen Dots')}>Zen Dots</ButtonFont>
+              <ButtonFont onCLick={() => seletcFont('Karantina')}>Karantina</ButtonFont>
+            </ButtonFontDiv>
+            <ButtonColorDiv>
+              <ButtonColorRed onClick={() => seletcColor('red')}>Red</ButtonColorRed>
+              <ButtonColorWhite onCLick={() => seletcColor('white')}>White</ButtonColorWhite>
+              <ButtonColorBlack onCLick={() => seletcColor('black')}>Black</ButtonColorBlack>
+            </ButtonColorDiv>
+
           </DivInput>
         </form>
       </main>

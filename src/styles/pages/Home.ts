@@ -14,6 +14,7 @@ export const Title = styled.h1`
   font-size: 54px;
   color: ${props => props.theme.colors.primary};
   margin-top: 40px;
+  font-family: 'Zen Dots'
 `
 
 export const Description = styled.p`
@@ -44,8 +45,65 @@ export const DivInput = styled.div`
 `
 
 export const Canvas = styled.canvas`
-  background: red;
+  background: #666;
   margin: 10px;
-  width: 400px;
+  width: 500px;
   border-radius: 10px;
 `
+
+export const DivCanvas = styled.div`
+  
+`
+
+export const DragActive = styled.div`
+  background: #ff6600;
+  margin: 10px;
+  width: 500px;
+  height: 250px;
+  border-radius: 10px;
+`
+
+export const DragActiveTitle = styled.div`
+  text-align: center;
+  color: #333;
+  align-items: center;
+`
+
+export const ButtonFont = styled.button`
+border-radius: 10px;
+height: 20px;
+width: 100px;
+`
+
+export const ButtonColorRed = styled.button`
+border-radius: 10px;
+height: 20px;
+width: 100px;
+background: 'red'
+`
+
+export const ButtonColorWhite = styled.button`
+border-radius: 10px;
+height: 20px;
+width: 100px;
+background: 'white'
+`
+
+export const ButtonColorBlack = styled.button`
+border-radius: 10px;
+height: 20px;
+width: 100px;
+background: 'Black'
+`
+
+export const ButtonFontDiv = styled.div`
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 2%;
+`
+export const ButtonColorDiv = styled.div`
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 2%;
+`
+

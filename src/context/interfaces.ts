@@ -12,4 +12,6 @@ export interface ContextData {
   setUpperText: (value:string) => void;
   setLowerText: (value: string) => void;
   onDrop: (selectedFiles: File[]) => void;
+  seletcColor: (selectedColor: string) => void;
+  seletcFont: (selectedFont: string) => void;
 }
