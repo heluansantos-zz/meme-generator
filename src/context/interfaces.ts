@@ -5,9 +5,11 @@ export interface ContextProviderProps {
 }
 
 export interface ContextData {
-  canvasRef: MutableRefObject<HTMLCanvasElement>;
+    canvasRef: MutableRefObject<HTMLCanvasElement>;
     upperText: string;
     lowerText: string;
-    setUpperText: (value:string) => void;
-    setLowerText: (value:string) => void;
+    images: string[];
+  setUpperText: (value:string) => void;
+  setLowerText: (value: string) => void;
+  onDrop: (selectedFiles: File[]) => void;
 }

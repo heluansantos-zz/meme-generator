@@ -19,9 +19,11 @@ const Home: React.FC = () => {
     lowerText,
     setLowerText,
     setUpperText,
-    upperText
+    upperText,
+    onDrop,
+    images
   } = useContext(Context)
-  const { getRootProps, getInputProps } = useDropzone({})
+  const { getRootProps, getInputProps } = useDropzone({ onDrop, accept: ['image/*'] })
   const [name] = useState({
     title: 'Meme Generator',
     description: 'Meme Generator or editing.'
@@ -36,16 +38,15 @@ const Home: React.FC = () => {
       <Description>{name.description}</Description>
 
       <main>
-        <Canvas
-          {...getRootProps}
-          ref={canvasRef}
-          style={{ background: 'red', margin: 10, width: 400, borderRadius: 10 }}
-          onClick={() => {
-            alert(canvasRef.current);
-          }}
+        <div
+          {...getRootProps()}
+          style={{ background: '#666', borderRadius: 10 }}
         >
-          <input {...getInputProps} />
-        </Canvas>
+          <Canvas ref={canvasRef}> </Canvas>
+          <input {...getInputProps()} />
+
+        </div>
+        {/* <img src={images[0]} alt="" /> */}
         <form>
           <DivInput>
             <Label htmlFor="upperText">Title</Label>
