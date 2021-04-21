@@ -96,6 +96,11 @@ width: 100px;
 background: 'Black'
 `
 
+export const ButtonSave = styled.button`
+border-radius: 10px;
+height: 34px;
+`
+
 export const ButtonFontDiv = styled.div`
   flex-direction: row;
   justify-content: space-around;

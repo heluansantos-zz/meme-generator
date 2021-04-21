@@ -14,4 +14,5 @@ export interface ContextData {
   onDrop: (selectedFiles: File[]) => void;
   seletcColor: (selectedColor: string) => void;
   seletcFont: (selectedFont: string) => void;
+  saveMeme: () => void;
 }

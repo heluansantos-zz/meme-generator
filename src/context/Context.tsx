@@ -32,12 +32,24 @@ export const ContextProvider = ({ children }: ContextProviderProps) => {
                 contexto.fillText(lowerText, 50, 440);
                 contexto.lineWidth = 2;
             }
-            image.src = images[0];
+            image.src = images[0]
         }
     }, [images, upperText, lowerText, color, font])
 
     const seletcFont = (selectedFont: string) => {
         setFont(selectedFont);
+    }
+
+    const saveMeme = () => {
+        if(images && images.length > 0) {
+            const canvas = canvasRef.current;
+            console.log(canvas.toDataURL());
+            const a = document.createElement('a');
+            a.href = canvas.toDataURL();
+            a.download = 'meme.png';
+            document.body.appendChild(a);
+            a.click();
+        }
     }
 
     const seletcColor = (selectedColor: string) => {
@@ -68,6 +80,7 @@ export const ContextProvider = ({ children }: ContextProviderProps) => {
             images,
             seletcFont,
             seletcColor,
+            saveMeme,
         }}>
             {
                 children

@@ -18,7 +18,8 @@ import {
   ButtonColorWhite,
   ButtonColorBlack,
   ButtonColorDiv,
-  ButtonFontDiv
+  ButtonFontDiv,
+  ButtonSave
 } from '../styles/pages/Home'
 import { Context } from '../context/Context'
 
@@ -33,6 +34,7 @@ const Home: React.FC = () => {
     images,
     seletcColor,
     seletcFont,
+    saveMeme,
   } = useContext(Context)
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept: ['image/*'] })
   const [name] = useState({
@@ -88,14 +90,15 @@ const Home: React.FC = () => {
             <Label htmlFor="upperText">Filters</Label>
             <ButtonFontDiv>
               <ButtonFont onClick={() => seletcFont('Roboto')}>Roboto</ButtonFont>
-              <ButtonFont onCLick={() => seletcFont('Zen Dots')}>Zen Dots</ButtonFont>
-              <ButtonFont onCLick={() => seletcFont('Karantina')}>Karantina</ButtonFont>
+              <ButtonFont onClick={() => seletcFont('Zen Dots')}>Zen Dots</ButtonFont>
+              <ButtonFont onClick={() => seletcFont('Karantina')}>Karantina</ButtonFont>
             </ButtonFontDiv>
             <ButtonColorDiv>
               <ButtonColorRed onClick={() => seletcColor('red')}>Red</ButtonColorRed>
-              <ButtonColorWhite onCLick={() => seletcColor('white')}>White</ButtonColorWhite>
-              <ButtonColorBlack onCLick={() => seletcColor('black')}>Black</ButtonColorBlack>
+              <ButtonColorWhite onClick={() => seletcColor('white')}>White</ButtonColorWhite>
+              <ButtonColorBlack onClick={() => seletcColor('black')}>Black</ButtonColorBlack>
             </ButtonColorDiv>
+            <ButtonSave onClick={() => saveMeme()}>Save</ButtonSave>
 
           </DivInput>
         </form>
